@@ -1,0 +1,204 @@
+/* === ПАЛИТРА MATERIAL YOU (DARK TONAL SPOT) === */
+@define-color bg_transparent rgba(0, 0, 0, 0);
+@define-color surface #111318;
+@define-color surface_container #1d2024;
+@define-color surface_container_high #282a2f;
+
+/* Акцентные контейнеры (как кнопки в Pixel Weather) */
+@define-color primary #a8c7fa;
+@define-color on_primary #062e6f;
+@define-color primary_container #284777;
+@define-color on_primary_container #d6e3ff;
+
+@define-color secondary_container #3e4759;
+@define-color on_secondary_container #dae2f9;
+
+/* Теплый акцент для погоды и уведомлений */
+@define-color tertiary_container #573e5c;
+@define-color on_tertiary_container #fad8fd;
+@define-color weather_sun_container #5c4328;
+@define-color on_weather_sun #ffdcbe;
+
+@define-color text_main #e2e2e9;
+@define-color text_sub #c4c6d0;
+
+/* === БАЗОВЫЕ НАСТРОЙКИ === */
+* {
+  font-family: "Google Sans", "Product Sans", "Rubik", "Inter", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* Прозрачная подложка самой панели для эффекта парящих островков */
+window,
+#bar {
+  background-color: @bg_transparent;
+}
+
+/* Отступы между группами виджетов */
+.container {
+  background-color: @surface;
+  border-radius: 28px;
+  padding: 5px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* === ВОРКСПЕЙСЫ (Expressive Morphing Buttons) === */
+.workspaces {
+  background-color: @surface_container;
+  border-radius: 24px;
+  padding: 4px;
+  margin-right: 8px;
+}
+
+.workspaces .item {
+  background-color: transparent;
+  color: @text_sub;
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin: 0 2px;
+  transition: all 250ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.workspaces .item:hover {
+  background-color: @surface_container_high;
+  color: @text_main;
+  border-radius: 12px;
+}
+
+.workspaces .item.focused {
+  background-color: @primary;
+  color: @on_primary;
+  border-radius: 14px;
+  padding: 4px 18px;
+  font-weight: 700;
+}
+
+/* === КАПСУЛА ПОГОДЫ (Pixel Weather Vibe) === */
+.weather-pill {
+  background-color: @weather_sun_container;
+  color: @on_weather_sun;
+  border-radius: 20px;
+  padding: 6px 16px;
+  transition: all 200ms ease-in-out;
+}
+
+.weather-pill:hover {
+  border-radius: 12px;
+  background-color: #6e5132;
+}
+
+/* === ЧАСЫ В ЦЕНТРЕ === */
+.clock {
+  background-color: @primary_container;
+  color: @on_primary_container;
+  border-radius: 22px;
+  padding: 6px 20px;
+  font-size: 14.5px;
+  font-weight: 700;
+  transition: all 250ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.clock:hover {
+  border-radius: 12px;
+  background-color: @primary;
+  color: @on_primary;
+}
+
+/* === ПРАВЫЙ БЛОК: МУЗЫКА, ЗВУК, МИКРОФОН, СИСТЕМА === */
+.music,
+.volume,
+.mic-pill,
+.sys-info,
+.sys_info,
+.upower,
+.tray {
+  background-color: @surface_container;
+  color: @text_main;
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin-left: 6px;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+/* Выделяем плеер в отдельный тональный цвет */
+.music {
+  background-color: @tertiary_container;
+  color: @on_tertiary_container;
+}
+
+/* Звук и микрофон в едином тональном стиле */
+.volume,
+.mic-pill {
+  background-color: @secondary_container;
+  color: @on_secondary_container;
+}
+
+/* Сброс дефолтного фона кнопки внутри капсулыs микрофона и звука */
+.mic-pill button,
+.volume button {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+/* Эффект нажатия/наведения как на карточках в Pixel */
+.music:hover,
+.volume:hover,
+.mic-pill:hover,
+.sys-info:hover,
+.sys_info:hover,
+.upower:hover {
+  border-radius: 12px;
+}
+
+/* === ВСПЛЫВАЮЩИЕ ОКНА (КАЛЕНДАРЬ, ПЛЕЕР, МИКШЕР) === */
+.popup {
+  background-color: @surface;
+  color: @text_main;
+  border-radius: 28px;
+  padding: 18px;
+  border: 1px solid @surface_container_high;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Кнопки внутри всплывающих окон (плеер, громкость) */
+.popup button {
+  background-color: @surface_container_high;
+  color: @text_main;
+  border-radius: 18px;
+  padding: 8px 14px;
+  margin: 4px;
+  transition: all 200ms ease;
+}
+
+.popup button:hover {
+  background-color: @primary;
+  color: @on_primary;
+  border-radius: 10px;
+}
+
+/* Ползунки громкости и трека в стиле толстых слайдеров Android 15/16 */
+scale trough {
+  background-color: @surface_container_high;
+  border-radius: 12px;
+  min-height: 12px;
+}
+
+scale highlight {
+  background-color: @primary;
+  border-radius: 12px;
+  min-height: 12px;
+}
+
+scale slider {
+  background-color: @on_primary_container;
+  border-radius: 99px;
+  min-width: 16px;
+  min-height: 16px;
+  margin: -2px;
+}

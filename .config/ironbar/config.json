@@ -1,0 +1,91 @@
+{
+  "position": "top",
+  "height": 48,
+  "margin": {
+    "top": 8,
+    "bottom": 0,
+    "left": 12,
+    "right": 12
+  },
+  "start": [
+    {
+      "type": "workspaces",
+      "all_monitors": false
+    },
+    {
+      "type": "custom",
+      "class": "weather-pill",
+      "bar": [
+        {
+          "type": "label",
+          "label": "⛅ {{3600:curl -s 'wttr.in/?format=%t+%C' | sed 's/+//'}}"
+        }
+      ]
+    }
+  ],
+  "center": [
+    {
+      "type": "clock",
+      "format": "%H:%M  •  %a, %d %b"
+    }
+  ],
+  "end": [
+    {
+      "type": "music",
+      "player_type": "mpris",
+      "format": "{title} - {artist}",
+      "truncate": {
+        "mode": "end",
+        "max_length": 28
+      },
+      "icons": {
+        "play": "󰐊",
+        "pause": "󰏤"
+      }
+    },
+    {
+      "type": "custom",
+      "class": "volume",
+      "bar": [
+        {
+          "type": "button",
+          "label": "{{500:LC_ALL=C wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{v=int($2*100); print ($3==\"[MUTED]\" ? \"󰝟 Выкл (\"v\"%)\" : \"󰕾 Вкл \"v\"%\")}'}}",
+          "on_click": "!wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+          "on_scroll_up": "!wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+          "on_scroll_down": "!wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "class": "mic-pill",
+      "bar": [
+        {
+          "type": "button",
+          "label": "{{500:LC_ALL=C wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | awk '{v=int($2*100); print ($3==\"[MUTED]\" ? \"󰍭 Выкл (\"v\"%)\" : \"󰍬 Вкл \"v\"%\")}'}}",
+          "on_click": "!wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+          "on_scroll_up": "!wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+",
+          "on_scroll_down": "!wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "class": "sys-info",
+      "bar": [
+        {
+          "type": "label",
+          "label": "{{2000:LC_ALL=C free | awk '/Mem:/ {printf \"󰍛 %.0f%%\", $3/$2*100}'}}  {{2000:LC_ALL=C top -bn1 | awk '/Cpu\\(s\\)/ {printf \"Cpu %.0f%%\", 100-$8}'}}"
+        }
+      ]
+    },
+    {
+      "type": "battery",
+      "format": "{percentage}%",
+      "icon_size": 16
+    },
+    {
+      "type": "tray"
+    }
+  ]
+}

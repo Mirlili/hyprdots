@@ -1,0 +1,17 @@
+show=drun
+width=680
+height=480
+always_parse_args=true
+show_all=false
+print_command=true
+insensitive=true
+
+prompt=Поиск приложений...
+
+allow_images=true
+image_size=36
+
+hide_scroll=true
+no_actions=true
+
+columns=2
