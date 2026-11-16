@@ -5,4 +5,4 @@ cd ./hyprdots
 ./install.sh
 ```
 ## Фото
-![Screenshot] (assets/screenshot.png)
+![Screenshot](assets/screenshot.png)
